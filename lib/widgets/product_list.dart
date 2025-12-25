@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_shopping_app/dummy_products_data.dart';
-import 'package:flutter_shopping_app/product_card.dart';
+import 'package:flutter_shopping_app/widgets/product_card.dart';
+import 'package:flutter_shopping_app/pages/product_details_page.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+
+class ProductList extends StatefulWidget {
+  const ProductList({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<ProductList> createState() => _ProductListState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _ProductListState extends State<ProductList> {
   final List<String> filterList = const [
     'All',
     'Nike',
@@ -20,16 +22,14 @@ class _HomePageState extends State<HomePage> {
   ];
   late String selectedFilter;
 
-  @override
+    @override
   void initState() {
-    // TODO: implement initState
     selectedFilter = filterList[0];
     super.initState();
   }
-
   @override
   Widget build(BuildContext context) {
-    final border = OutlineInputBorder(
+     final border = OutlineInputBorder(
       borderSide: BorderSide(color: Color.fromRGBO(225, 225, 255, 1)),
       borderRadius: BorderRadius.horizontal(
         left: Radius.circular(30),
@@ -37,8 +37,7 @@ class _HomePageState extends State<HomePage> {
         // right: Radius.circular(30),
       ),
     );
-    return Scaffold(
-      body: SafeArea(
+    return  SafeArea(
         child: Column(
           children: [
             Row(
@@ -103,19 +102,26 @@ class _HomePageState extends State<HomePage> {
                 itemBuilder: (context, index) {
                   final product = products[index];
 
-                  return ProductCard(
-                    title: product['title'] as String,
-                    company: product['company']as String,
-                    imageurl: product['imageUrl']as String,
-                    size: product['sizes'] as List<int>,
-                    price: product['price'] as double,
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context){
+                        return ProductDetailsPage(product: product);
+                      }));
+                    },
+                    child: ProductCard(
+                      title: product['title'] as String,
+                      company: product['company']as String,
+                      imageurl: product['imageUrl']as String,
+                      size: product['sizes'] as List<int>,
+                      price: product['price'] as double,
+                      backgroundColor : index.isEven ? Color.fromRGBO(216, 240, 253, 1) : Color.fromRGBO(245, 247, 249, 1),
+                    ),
                   );
                 },
               ),
             ),
           ],
         ),
-      ),
-    );
+      );
   }
 }

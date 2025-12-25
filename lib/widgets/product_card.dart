@@ -6,6 +6,7 @@ class ProductCard extends StatelessWidget {
   final String imageurl;
   final String company;
   final List<int> size;
+  final Color backgroundColor;
 
   const ProductCard({
     required this.title,
@@ -13,20 +14,27 @@ class ProductCard extends StatelessWidget {
     required this.imageurl,
     required this.size,
     required this.price,
+    required this.backgroundColor,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color.fromRGBO(216, 240, 253, 1),
+      margin: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16.0),
+      decoration: BoxDecoration(
+        color: backgroundColor,
+        borderRadius: BorderRadius.circular(10),
+      ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(title),
+          Text(title, style: Theme.of(context).textTheme.titleMedium),
           SizedBox(height: 5),
-          Text('\$ $price'),
-          // SizedBox(height: 5),
-          Image(image: AssetImage(imageurl))
+          Text('\$ $price', style: Theme.of(context).textTheme.bodySmall),
+          SizedBox(height: 5),
+          Image(image: AssetImage(imageurl)),
         ],
       ),
     );
