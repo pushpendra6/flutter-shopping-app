@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_shopping_app/dummy_products_data.dart';
 import 'package:flutter_shopping_app/widgets/product_card.dart';
-import 'package:flutter_shopping_app/pages/product_details_page.dart';
+import 'package:flutter_shopping_app/screens/product_details_screen.dart';
 
 
 class ProductList extends StatefulWidget {
@@ -105,7 +105,7 @@ class _ProductListState extends State<ProductList> {
                   return GestureDetector(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(builder: (context){
-                        return ProductDetailsPage(product: product);
+                        return ProductDetailsScreen(product: product);
                       }));
                     },
                     child: ProductCard(

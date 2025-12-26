@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_shopping_app/pages/cart_page.dart';
+import 'package:flutter_shopping_app/screens/cart_screen.dart';
 import 'package:flutter_shopping_app/widgets/product_list.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomeScreenState extends State<HomeScreen> {
   
   int currentPage =0 ;
-  List<Widget> pages = const [ProductList(),CartPage()]; 
+  List<Widget> pages =  [ProductList(),CartScreen()]; 
   @override
   Widget build(BuildContext context) {
    
