@@ -2,18 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_shopping_app/providers/cart_provider.dart';
 import 'package:provider/provider.dart';
 
-class CartScreen extends StatefulWidget {
+class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
 
   @override
-  State<CartScreen> createState() => _CartScreenState();
-}
-
-class _CartScreenState extends State<CartScreen> {
-  @override
   Widget build(BuildContext context) {
     final cart = context.watch<CartProvider>().cart;
-    print('cart :- $cart');
     return Scaffold(
       appBar: AppBar(
         title: Center(
@@ -82,7 +76,20 @@ class _CartScreenState extends State<CartScreen> {
               cartItem['title'].toString(),
               style: Theme.of(context).textTheme.bodySmall,
             ),
-            subtitle: Text('Size: ${cartItem['size']}'),
+            subtitle: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text('Size: ${cartItem['size']}'),
+                ),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text('Quantity: ${cartItem['quantity']}'),
+                ),
+              ],
+            ),
           );
         },
       ),

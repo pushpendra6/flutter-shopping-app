@@ -21,6 +21,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         'imageUrl': widget.product['imageUrl'],
         'company': widget.product['company'],
         'size': selectedSize,
+        'quantity' : 1
       });
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Product added successfully!')),
