@@ -113,7 +113,7 @@ class _ProductListState extends State<ProductList> {
                       company: product['company']as String,
                       imageurl: product['imageUrl']as String,
                       size: product['sizes'] as List<int>,
-                      price: product['price'] as double,
+                      price: product['price'] as int,
                       backgroundColor : index.isEven ? Color.fromRGBO(216, 240, 253, 1) : Color.fromRGBO(245, 247, 249, 1),
                     ),
                   );

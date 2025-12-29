@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
   final String title;
-  final double price;
+  final int price;
   final String imageurl;
   final String company;
   final List<int> size;
@@ -32,7 +32,7 @@ class ProductCard extends StatelessWidget {
         children: [
           Text(title, style: Theme.of(context).textTheme.titleMedium),
           SizedBox(height: 5),
-          Text('\$ $price', style: Theme.of(context).textTheme.bodySmall),
+          Text('₹ $price', style: Theme.of(context).textTheme.bodySmall),
           SizedBox(height: 5),
           Image(image: AssetImage(imageurl)),
         ],
