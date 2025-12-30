@@ -8,9 +8,11 @@ This project demonstrates:
 - Displaying products using `ListView.builder`
 - Using dummy product data
 - Reusable UI components (`ProductCard`)
+- Brand Based Filtering using chips
 - Horizontal filter chips
 - **State management using Provider**
 - Adding and removing products from cart
+- Checkout flow
 - Basic Flutter layout and theming
 
 ## Features
@@ -26,6 +28,10 @@ This project demonstrates:
 - Cart screen with:
   - List of added products
   - Delete product with confirmation dialog
+- Checkout Screen with:
+  - List of Cart Products
+  - Total Payable Amount in bottom
+  - Pay Button 
 - SnackBar feedback for user actions
 - Simple Material UI design
 

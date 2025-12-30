@@ -61,7 +61,7 @@ class CheckoutScreen extends StatelessWidget {
       ),
 
       bottomNavigationBar: SafeArea(
-        top: true,
+        top: false,
         child: Container(
           padding: const EdgeInsets.all(16),
           decoration: const BoxDecoration(
