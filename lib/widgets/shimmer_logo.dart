@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_shopping_app/providers/auth_provider.dart';
 import 'package:flutter_shopping_app/screens/home_screen.dart';
+import 'package:flutter_shopping_app/screens/login_signup_screen.dart';
+import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart'; // Make sure this path points to your actual home file
 
 class SplashScreen extends StatefulWidget {
@@ -23,10 +26,12 @@ class _SplashScreenState extends State<SplashScreen> {
     // Safety check to ensure the widget is still in the tree
     if (!mounted) return;
 
+    final isAuthenticate = context.read<AuthProvider>().isAuthenticated;
+
     // Navigate to Home Screen and remove Splash from the back-stack
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => const HomeScreen()),
+      MaterialPageRoute(builder: (context) => isAuthenticate ? const HomeScreen() : LoginSignupScreen() ),
     );
   }
 
