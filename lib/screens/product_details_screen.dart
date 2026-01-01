@@ -21,7 +21,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         'imageUrl': widget.product['imageUrl'],
         'company': widget.product['company'],
         'size': selectedSize,
-        'quantity' : 1
+        'quantity': 1,
       });
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Product added successfully!')),
@@ -40,9 +40,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         title: Center(
           child: Text('Details', style: Theme.of(context).textTheme.titleLarge),
         ),
-        // titleTextStyle: TextStyle(
-        //   backgroundColor: Color.fromRGBO(46, 153, 46, 1)
-        // ),
+        backgroundColor: Theme.of(context).colorScheme.primary,
       ),
       body: Column(
         children: [
@@ -54,7 +52,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
           Spacer(),
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Image.asset(widget.product['imageUrl'] as String),
+            child: Image.asset(
+              widget.product['imageUrl'] as String,
+              height: 175,
+            ),
           ),
           Spacer(flex: 2),
           Container(
@@ -102,7 +103,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: ElevatedButton.icon(
-                    onPressed:onTapBtn,
+                    onPressed: onTapBtn,
                     icon: const Icon(Icons.shopping_cart, color: Colors.black),
                     label: Text(
                       'Add To Cart',
@@ -115,7 +116,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Theme.of(context).colorScheme.primary,
-                      minimumSize: const Size(double.infinity, 50),
+                      fixedSize: const Size(250, 50),
                     ),
                   ),
                 ),

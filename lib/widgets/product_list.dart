@@ -42,6 +42,7 @@ class _ProductListState extends State<ProductList> {
         : products
               .where((product) => product['company'] == selectedFilter)
               .toList();
+
     return SafeArea(
       child: Column(
         children: [
@@ -122,32 +123,71 @@ class _ProductListState extends State<ProductList> {
             ),
           ),
           Expanded(
-            child: ListView.builder(
-              itemCount:  filteredProducts.length,
-              itemBuilder: (context, index) {
-                final product = filteredProducts[index];
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                if (constraints.maxWidth > 650) {
+                  return GridView.builder(
+                    itemCount: filteredProducts.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 2,
+                    ),
+                    itemBuilder: (context, index) {
+                      final product = filteredProducts[index];
 
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return ProductDetailsScreen(product: product);
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return ProductDetailsScreen(product: product);
+                              },
+                            ),
+                          );
                         },
-                      ),
-                    );
-                  },
-                  child: ProductCard(
-                    title: product['title'] as String,
-                    company: product['company'] as String,
-                    imageurl: product['imageUrl'] as String,
-                    size: product['sizes'] as List<int>,
-                    price: product['price'] as int,
-                    backgroundColor: index.isEven
-                        ? Color.fromRGBO(216, 240, 253, 1)
-                        : Color.fromRGBO(245, 247, 249, 1),
-                  ),
-                );
+                        child: ProductCard(
+                          title: product['title'] as String,
+                          company: product['company'] as String,
+                          imageurl: product['imageUrl'] as String,
+                          size: product['sizes'] as List<int>,
+                          price: product['price'] as int,
+                          backgroundColor: index.isEven
+                              ? Color.fromRGBO(216, 240, 253, 1)
+                              : Color.fromRGBO(245, 247, 249, 1),
+                        ),
+                      );
+                    },
+                  );
+                } else {
+                  return ListView.builder(
+                    itemCount: filteredProducts.length,
+                    itemBuilder: (context, index) {
+                      final product = filteredProducts[index];
+
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return ProductDetailsScreen(product: product);
+                              },
+                            ),
+                          );
+                        },
+                        child: ProductCard(
+                          title: product['title'] as String,
+                          company: product['company'] as String,
+                          imageurl: product['imageUrl'] as String,
+                          size: product['sizes'] as List<int>,
+                          price: product['price'] as int,
+                          backgroundColor: index.isEven
+                              ? Color.fromRGBO(216, 240, 253, 1)
+                              : Color.fromRGBO(245, 247, 249, 1),
+                        ),
+                      );
+                    },
+                  );
+                }
               },
             ),
           ),

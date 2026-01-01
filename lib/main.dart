@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_shopping_app/providers/cart_provider.dart';
-import 'package:flutter_shopping_app/screens/home_screen.dart';
+import 'package:flutter_shopping_app/widgets/shimmer_logo.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         title: 'Shopping App',
-        home: const HomeScreen(),
+        home: const SplashScreen(),
       ),
     );
   }
