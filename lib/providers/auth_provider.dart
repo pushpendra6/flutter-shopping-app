@@ -10,8 +10,8 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void logout(String mobileNumber) {
-    _isAuthenticated = false;
-    notifyListeners();
-  }
+  // void logout(String mobileNumber) {
+  //   _isAuthenticated = false;
+  //   notifyListeners();
+  // }
 }

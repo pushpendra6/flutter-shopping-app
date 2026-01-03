@@ -11,12 +11,11 @@ class CheckoutScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Center(
-          child: Text(
-            'Checkout',
-            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-          ),
+        title: Text(
+          'Checkout',
+          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
         ),
+        centerTitle: true,
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
       body: ListView.builder(

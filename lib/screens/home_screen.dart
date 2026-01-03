@@ -19,45 +19,48 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final cartProvider = Provider.of<CartProvider>(context);
 
-    return Scaffold(
-      body: IndexedStack(index: currentPage, children: pages),
-      bottomNavigationBar: BottomNavigationBar(
-        iconSize: 30,
-        selectedFontSize: 0,
-        unselectedFontSize: 0,
-        currentIndex: currentPage,
-        onTap: (value) {
-          setState(() {
-            currentPage = value;
-          });
-        },
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-          BottomNavigationBarItem(
-            icon: Stack(
-              children: [
-                Icon(Icons.shopping_cart),
-                if (cartProvider.totalItems > 0)
-                  Positioned(
-                    right: 0,
-                    top: 0,
-                    child: CircleAvatar(
-                      radius: 8,
-                      backgroundColor: Colors.red,
-                      child: Text(
-                        cartProvider.totalItems.toString(),
-                        style: const TextStyle(
-                          fontSize: 10,
-                          color: Colors.white,
+    return PopScope (
+      canPop: false,
+      child: Scaffold(
+        body: IndexedStack(index: currentPage, children: pages),
+        bottomNavigationBar: BottomNavigationBar(
+          iconSize: 30,
+          selectedFontSize: 0,
+          unselectedFontSize: 0,
+          currentIndex: currentPage,
+          onTap: (value) {
+            setState(() {
+              currentPage = value;
+            });
+          },
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
+            BottomNavigationBarItem(
+              icon: Stack(
+                children: [
+                  Icon(Icons.shopping_cart),
+                  if (cartProvider.totalItems > 0)
+                    Positioned(
+                      right: 0,
+                      top: 0,
+                      child: CircleAvatar(
+                        radius: 8,
+                        backgroundColor: Colors.red,
+                        child: Text(
+                          cartProvider.totalItems.toString(),
+                          style: const TextStyle(
+                            fontSize: 10,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-              ],
+                ],
+              ),
+              label: '',
             ),
-            label: '',
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

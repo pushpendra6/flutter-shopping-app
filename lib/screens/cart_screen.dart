@@ -12,12 +12,11 @@ class CartScreen extends StatelessWidget {
     final cart = context.watch<CartProvider>().cart;
     return Scaffold(
       appBar: AppBar(
-        title: Center(
-          child: Text(
-            'Cart',
-            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-          ),
+        title: Text(
+          'Cart',
+          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
         ),
+        centerTitle: true,
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
       body: cart.isEmpty

@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_shopping_app/providers/auth_provider.dart';
 import 'package:flutter_shopping_app/screens/home_screen.dart';
-import 'package:flutter_shopping_app/screens/login_signup_screen.dart';
+import 'package:flutter_shopping_app/screens/login_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart'; // Make sure this path points to your actual home file
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+class ShimmerScreen extends StatefulWidget {
+  const ShimmerScreen({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  State<ShimmerScreen> createState() => _ShimmerScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _ShimmerScreenState extends State<ShimmerScreen> {
   @override
   void initState() {
     super.initState();
@@ -27,11 +27,15 @@ class _SplashScreenState extends State<SplashScreen> {
     if (!mounted) return;
 
     final isAuthenticate = context.read<AuthProvider>().isAuthenticated;
+    print('isAutheicate 1 :- $isAuthenticate');
 
     // Navigate to Home Screen and remove Splash from the back-stack
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => isAuthenticate ? const HomeScreen() : LoginSignupScreen() ),
+      MaterialPageRoute(
+        builder: (context) =>
+            isAuthenticate ? const HomeScreen() : LoginScreen(),
+      ),
     );
   }
 
@@ -50,24 +54,6 @@ class _SplashScreenState extends State<SplashScreen> {
               child: Icon(Icons.shopping_bag, size: 160, color: Colors.white),
             ),
 
-            // Shimmer.fromColors(
-            //   baseColor: const Color(0xFFFFEB3B), // Your logo yellow
-            //   highlightColor: Colors.white,
-            //   period: const Duration(milliseconds: 1500),
-            //   child: ColorFiltered(
-            //     colorFilter: const ColorFilter.mode(
-            //       Colors.white,
-            //       BlendMode.srcIn,
-            //     ),
-            //     child: Image.asset(
-            //       'assets/icon/app_icon.png',
-            //       width: 180,
-            //       height: 180,
-            //     ),
-            //   ),
-            // ),
-            // const SizedBox(height: 24),
-            // Optional: Add a subtle loading text or your app name
             Shimmer.fromColors(
               baseColor: Colors.black54,
               highlightColor: Colors.grey[100]!,
