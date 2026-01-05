@@ -48,7 +48,6 @@ class _LoginScreenState extends State<LoginScreen> {
               Text(
                 'Enter the 6-digit OTP send to the +91-${mobileController.text}',
               ),
-              Divider(thickness: 1,color: Colors.black,height: 10,),
               Text('For Testing the otp is 222333'),
               TextField(
                 maxLength: 6,
